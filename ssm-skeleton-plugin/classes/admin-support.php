@@ -31,8 +31,8 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	 * Plugin Activation
 	 */
 	public static function plugin_activation() {
-		self::add_rewrite_rules();
-		flush_rewrite_rules();
+		// self::add_rewrite_rules();
+		// flush_rewrite_rules();
 	}
 
 	/**
@@ -197,7 +197,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	// Add rules
 	public static function add_rewrite_rules() 
 	{
-		add_rewrite_rule( 'stores/?([^/]*)', 'index.php?pagename=stores & store_id=$matches[1]', 'top' );
+		// add_rewrite_rule( 'stores/?([^/]*)', 'index.php?pagename=stores & store_id=$matches[1]', 'top' );
 	}
 
 	/**
