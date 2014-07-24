@@ -19,7 +19,7 @@ class __CLASSNAMEPREFIX_Base_Support {
 	*/
 	public static function log($message) 
 	{
-		$file 	= self::$this_plugin_dir."log/logfile.txt";
+		$file 	= $this->this_plugin_dir."log/logfile.txt";
 		file_put_contents($file, $message, FILE_APPEND | LOCK_EX);
 	}
 	

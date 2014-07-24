@@ -21,8 +21,8 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	 * TOP LEVEL static class initialization
 	 */
 	public static function init() {
-		if ( ! self::$initiated ) {
-			self::init_hooks();
+		if ( ! $this->initiated ) {
+			$this->init_hooks();
 		}
 	}
 
@@ -31,7 +31,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	 * Plugin Activation
 	 */
 	public static function plugin_activation() {
-		// self::add_rewrite_rules();
+		// $this->add_rewrite_rules();
 		// flush_rewrite_rules();
 	}
 
@@ -48,17 +48,17 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	 */
 	public static function init_hooks() 
 	{
-		self::$initiated = true;
-		add_action( 'admin_init', array( self::$class_name, 'admin_init' ) );
-		add_action( 'admin_menu', array( self::$class_name, 'admin_menu' ));
-		add_action( 'admin_notices', array( self::$class_name, 'display_notice' ) );
+		$this->initiated = true;
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+		add_action( 'admin_menu', array( $this, 'admin_menu' ));
+		add_action( 'admin_notices', array( $this, 'display_notice' ) );
 	}
 
 	/**
 	 * admin_init hook callback function for this class
 	 */
 	public static function admin_init() {
-			// self::add_rewrite_rules();
+			// $this->add_rewrite_rules();
 	}
 
 	/**
@@ -69,7 +69,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	}
 
 	public static function admin_menu() {
-		self::load_menu();
+		$this->load_menu();
 	}
 
 
@@ -82,7 +82,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 			'Menu Title 1', 		// Menu title
 			'manage_options', 	// User capability
 			'___skeleton-menu-1', 	// Menu/Page slug
-			array(self::$class_name,'display_page_1')
+			array($this,'display_page_1')
 		); 
 
 
@@ -92,7 +92,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 			'Menu Title 1', 		// Menu title
 			'manage_options', 	// User capability
 			'___skeleton-menu-1', 	// Menu slug
-			array(self::$class_name,'display_page_1')
+			array($this,'display_page_1')
 		); 
 		*/
 
@@ -119,7 +119,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 		add_settings_section(
 			'___section_1',			// ID for this section and to register options
 			'___SECTION 1 TITLE',	// Title displayed on the administration page
-			array(self::$class_name,'section_1_callback'), 	// Callback to render description of the section
+			array($this,'section_1_callback'), 	// Callback to render description of the section
 			'___skeleton-menu-1'			// Page on which to add this section of options
 		);
 
@@ -127,7 +127,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 		add_settings_field( 
 			'___field_1',					// Field ID
 			'___FIELD 1 LABEL',			// Label to the left of the option interface element
-			array(self::$class_name,'___field_1_callback'),	// function for rendering the option interface
+			array($this,'___field_1_callback'),	// function for rendering the option interface
 			'___skeleton-menu-1',			// The page on which this option will be displayed
 			'___section_1'					// Name of section to which this field belongs
 		);
@@ -136,7 +136,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 		add_settings_field( 
 			'___field_2',					// Field ID
 			'___FIELD 2 LABEL',			// Label to the left of the option interface element
-			array(self::$class_name,'___field_2_callback'),	// function for rendering the option interface
+			array($this,'___field_2_callback'),	// function for rendering the option interface
 			'___skeleton-menu-1',			// The page on which this option will be displayed
 			'___section_1'					// Name of section to which this field belongs
 		);

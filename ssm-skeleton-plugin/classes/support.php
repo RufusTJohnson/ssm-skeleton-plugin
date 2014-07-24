@@ -14,9 +14,9 @@ class __CLASSNAMEPREFIX_Support extends __CLASSNAMEPREFIX_Base_Support{
 	 * Initializes WordPress hooks
 	 */
 	public static function init() {
-		if ( ! self::$initiated ) 
+		if ( ! $this->initiated ) 
 		{
-			self::init_hooks();
+			$this->init_hooks();
 		}
 	}
 
@@ -24,7 +24,7 @@ class __CLASSNAMEPREFIX_Support extends __CLASSNAMEPREFIX_Base_Support{
 	* Initializes WordPress hooks
 	*/
 	private static function init_hooks() {
-		self::$initiated = true;
+		$this->initiated = true;
 	}
 
 
