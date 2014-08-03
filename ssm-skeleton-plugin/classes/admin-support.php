@@ -13,14 +13,20 @@
  * @since 1.0
  */
 class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
-	private static $initiated 	= false;
-	private static $class_name = "__CLASSNAMEPREFIX_Admin_Support";
-
+	private $initiated 		= false;
 
 	/**
-	 * TOP LEVEL static class initialization
+	 * Constructor.
 	 */
-	public static function init() {
+	public function __construct($plugin) {
+		parent::__construct($plugin);
+	}
+	
+	/**
+	 * TOP LEVEL class initialization
+	 */
+	public function init() {
+		$this->log(__FILE__ . "init\n");
 		if ( ! $this->initiated ) {
 			$this->init_hooks();
 		}
@@ -30,7 +36,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	/**
 	 * Plugin Activation
 	 */
-	public static function plugin_activation() {
+	public function plugin_activation() {
 		// $this->add_rewrite_rules();
 		// flush_rewrite_rules();
 	}
@@ -38,7 +44,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	/**
 	 * Plugin DeActivation
 	 */
-	public static function plugin_deactivation( ) {
+	public function plugin_deactivation( ) {
 		//tidy up
 	}
 
@@ -46,7 +52,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	/**
 	 * Initialize admin hooks
 	 */
-	public static function init_hooks() 
+	public function init_hooks() 
 	{
 		$this->initiated = true;
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -57,23 +63,23 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	/**
 	 * admin_init hook callback function for this class
 	 */
-	public static function admin_init() {
+	public function admin_init() {
 			// $this->add_rewrite_rules();
 	}
 
 	/**
 	 * admin_notices hook callback function for this class
 	 */
-	 public static function display_notice() {
+	 public function display_notice() {
 		 echo("Admin Notices go here");
 	}
 
-	public static function admin_menu() {
+	public function admin_menu() {
 		$this->load_menu();
 	}
 
 
-	public static function load_menu() {
+	public function load_menu() {
 
 		// Create Page
 		//add_plugins_page(
@@ -146,7 +152,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	}
 
 	// Display SECTION
-	public static function section_1_callback() {
+	public function section_1_callback() {
 		echo "___SECTION_1 help/description goes here";
 	}
 
@@ -155,7 +161,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	 * Callback function to display input form element for ___field_1
 	 *
 	 */	
-	 	public static function ___field_1_callback() {
+	 	public function ___field_1_callback() {
 		// get option ‘text_string’ value from the database
 		$option_value = get_option("option_1_1");
 		// echo the field
@@ -165,7 +171,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	/**
 	 * Callback function to display input form element for ___field_2
 	 */
-	public static function ___field_2_callback() {
+	public function ___field_2_callback() {
 		// get option ‘text_string’ value from the database
 		$option_value = get_option("option_1_2");
 		// echo the field
@@ -175,7 +181,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	/**
 	 * Callback function to display page identified by ___skeleton-menu-1
 	 */
-	public static function display_page_1() {
+	public function display_page_1() {
 		
 		global $wp_rewrite;
 		
@@ -195,7 +201,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	}
 
 	// Add rules
-	public static function add_rewrite_rules() 
+	public function add_rewrite_rules() 
 	{
 		// add_rewrite_rule( 'stores/?([^/]*)', 'index.php?pagename=stores & store_id=$matches[1]', 'top' );
 	}
@@ -203,7 +209,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	/**
 	 * Load resources
 	 */
-	public static function load_resources() {
+	public function load_resources() {
 	}
 
 
@@ -212,7 +218,7 @@ class __CLASSNAMEPREFIX_Admin_Support  extends __CLASSNAMEPREFIX_Base_Support{
 	 *
 	 * @return false if not the Akismet page
 	 */
-	public static function admin_help() {
+	public function admin_help() {
 	}
 
 

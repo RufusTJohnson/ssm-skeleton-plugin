@@ -5,15 +5,23 @@
  * @package __PACKAGENAME
  * @since 1.0
  */
-class __CLASSNAMEPREFIX_Support extends __CLASSNAMEPREFIX_Base_Support{
+class __CLASSNAMEPREFIX_Support extends __CLASSNAMEPREFIX_Base_Support {
 
-	private static $class_name 	= "__CLASSNAMEPREFIX_Support";
-	private static $initiated 		= false;
+	private $class_name 	= "__CLASSNAMEPREFIX_Support";
+	private $initiated 		= false;
+
+	/**
+	 * Constructor.
+	 */
+	public function __construct($plugin) {
+		parent::__construct($plugin);
+	}
 	
 	/**
 	 * Initializes WordPress hooks
 	 */
-	public static function init() {
+	public function init() { 
+		$this->log(__FILE__ . "init\n");
 		if ( ! $this->initiated ) 
 		{
 			$this->init_hooks();
@@ -23,13 +31,13 @@ class __CLASSNAMEPREFIX_Support extends __CLASSNAMEPREFIX_Base_Support{
 	/**
 	* Initializes WordPress hooks
 	*/
-	private static function init_hooks() {
+	private function init_hooks() {
 		$this->initiated = true;
 	}
 
 
 	// return a comma-separated list of role names for the given user
-	public static function get_user_roles( $user_id ) {
+	public function get_user_roles( $user_id ) {
 		$roles = false;
 
 		if ( !class_exists('WP_User') )
@@ -54,11 +62,11 @@ class __CLASSNAMEPREFIX_Support extends __CLASSNAMEPREFIX_Base_Support{
 	}
 
 
-	public static function _cmp_time( $a, $b ) {
+	public function _cmp_time( $a, $b ) {
 		return $a['time'] > $b['time'] ? -1 : 1;
 	}
 
-	public static function _get_microtime() {
+	public function _get_microtime() {
 		$mtime = explode( ' ', microtime() );
 		return $mtime[1] + $mtime[0];
 	}
